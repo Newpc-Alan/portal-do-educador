@@ -1,0 +1,2120 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gerador de Provas e Avaliações | Portal do Educador</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   GERADOR DE PROVAS E AVALIAÇÕES — Portal do Educador
+   Design System Premium v2.0
+═══════════════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:       #0d1117;
+  --ink-2:     #1c2333;
+  --ink-3:     #2d3748;
+  --slate:     #4a5568;
+  --muted:     #718096;
+  --border:    #e2e8f0;
+  --border-2:  #edf2f7;
+  --surface:   #f7f9fc;
+  --white:     #ffffff;
+
+  --blue:      #1a56db;
+  --blue-dk:   #1240a8;
+  --blue-lt:   #ebf1ff;
+  --blue-mid:  #3b82f6;
+
+  --brand:     #0f2057;
+  --brand-2:   #1a3a8f;
+  --brand-3:   #2952c9;
+  --brand-acc: #4f83ff;
+
+  --green:     #059669;
+  --green-lt:  #ecfdf5;
+  --amber:     #d97706;
+  --amber-lt:  #fffbeb;
+  --red:       #dc2626;
+  --red-lt:    #fef2f2;
+  --purple:    #7c3aed;
+  --purple-lt: #f5f3ff;
+
+  --r:    16px;
+  --r-sm: 10px;
+  --r-xs: 6px;
+
+  --sh-1: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --sh-2: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
+  --sh-3: 0 12px 40px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+  --sh-brand: 0 8px 32px rgba(26,86,219,.25);
+}
+
+/* ── Base ── */
+body {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  color: var(--ink);
+  background: linear-gradient(160deg, #eef2fa 0%, #f0f4fb 50%, #e8edf8 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #c7d2e0; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* ── Layout ── */
+.app-shell {
+  min-height: 100vh;
+}
+
+/* ── Main content ── */
+.app-main {
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 28px 20px 60px;
+}
+
+/* ── Hero header ── */
+.hero {
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%);
+  border-radius: var(--r);
+  padding: 22px 28px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--sh-brand);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(79,131,255,.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.hero-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hero-icon-wrap {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  background: rgba(255,255,255,.13);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.hero-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -.2px;
+  line-height: 1.2;
+}
+
+.hero-brand-sub {
+  font-size: .78rem;
+  font-weight: 500;
+  color: var(--brand-acc);
+  margin-top: 2px;
+  letter-spacing: .2px;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.hero-stat {
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 99px;
+  padding: 5px 14px;
+  font-size: .8rem;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* ── Step nav ── */
+.step-nav {
+  display: flex;
+  gap: 3px;
+  background: var(--white);
+  border-radius: var(--r);
+  padding: 5px;
+  margin-bottom: 24px;
+  box-shadow: var(--sh-1);
+  border: 1px solid var(--border-2);
+}
+
+.step-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border: none;
+  background: transparent;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: .83rem;
+  font-weight: 600;
+  color: var(--muted);
+  transition: all .2s ease;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.step-btn .sn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--border-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .8rem;
+  font-weight: 800;
+  transition: all .2s ease;
+  flex-shrink: 0;
+}
+
+.step-btn.active {
+  color: var(--blue);
+  background: var(--blue-lt);
+}
+
+.step-btn.active .sn {
+  background: var(--blue);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(26,86,219,.35);
+}
+
+.step-btn.done { color: var(--green); }
+
+.step-btn.done .sn {
+  background: var(--green);
+  color: #fff;
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--white);
+  border-radius: var(--r);
+  border: 1px solid var(--border-2);
+  box-shadow: var(--sh-1);
+  margin-bottom: 16px;
+  overflow: hidden;
+  transition: box-shadow .2s ease;
+}
+
+.card:hover { box-shadow: var(--sh-2); }
+
+.card-header {
+  padding: 18px 22px 16px;
+  border-bottom: 1px solid var(--border-2);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.ci-blue { background: var(--blue-lt); }
+.ci-green { background: var(--green-lt); }
+.ci-purple { background: var(--purple-lt); }
+.ci-amber { background: var(--amber-lt); }
+
+.card-header-text {}
+.card-header-text h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink-2);
+  letter-spacing: -.2px;
+}
+
+.card-header-text p {
+  font-size: .8rem;
+  color: var(--muted);
+  margin-top: 1px;
+}
+
+.card-body { padding: 20px 22px; }
+
+/* ── Grid ── */
+.g2 { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }
+.g3 { display: grid; gap: 14px; grid-template-columns: 1fr 1fr 1fr; }
+.mt { margin-top: 14px; }
+.mb { margin-bottom: 14px; }
+
+@media (max-width: 640px) {
+  .g2, .g3 { grid-template-columns: 1fr; }
+}
+
+/* ── Form fields ── */
+.field { display: flex; flex-direction: column; gap: 5px; }
+
+.field label {
+  font-size: .75rem;
+  font-weight: 700;
+  color: var(--slate);
+  text-transform: uppercase;
+  letter-spacing: .6px;
+}
+
+.field input[type="text"],
+.field input[type="number"],
+.field input[type="date"],
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 10px 13px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--white);
+  font-family: inherit;
+  font-size: .93rem;
+  color: var(--ink);
+  transition: all .15s ease;
+  outline: none;
+  appearance: none;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(26,86,219,.1);
+}
+
+.field textarea {
+  min-height: 86px;
+  resize: vertical;
+  line-height: 1.55;
+}
+
+.field .hint {
+  font-size: .76rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* ── File upload ── */
+.file-zone {
+  border: 2px dashed var(--border);
+  border-radius: var(--r-sm);
+  padding: 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: all .2s ease;
+  background: var(--surface);
+}
+
+.file-zone:hover {
+  border-color: var(--blue);
+  background: var(--blue-lt);
+}
+
+.file-zone input { display: none; }
+
+.logo-thumb {
+  max-height: 64px;
+  max-width: 180px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  margin-top: 8px;
+  display: none;
+}
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: none;
+  border-radius: var(--r-sm);
+  padding: 10px 18px;
+  font-family: inherit;
+  font-size: .88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .18s ease;
+  white-space: nowrap;
+  text-decoration: none;
+  letter-spacing: -.1px;
+}
+
+.btn:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,0,0,.18); }
+.btn:active { transform: translateY(0); box-shadow: none; }
+
+.btn-primary { background: var(--blue); color: #fff; }
+.btn-primary:hover { background: var(--blue-dk); }
+.btn-green { background: var(--green); color: #fff; }
+.btn-purple { background: var(--purple); color: #fff; }
+.btn-ghost { background: var(--white); color: var(--ink-3); border: 1.5px solid var(--border); }
+.btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
+.btn-red { background: var(--red); color: #fff; }
+.btn-amber { background: var(--amber); color: #fff; }
+
+.btn-sm { padding: 6px 12px; font-size: .8rem; border-radius: var(--r-xs); }
+.btn-xs { padding: 4px 9px; font-size: .75rem; border-radius: 5px; }
+.btn-full { width: 100%; }
+.btn-cta {
+  background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 100%);
+  color: #fff;
+  font-size: 1rem;
+  padding: 14px 24px;
+  box-shadow: var(--sh-brand);
+}
+.btn-cta:hover {
+  background: linear-gradient(135deg, var(--blue-dk) 0%, #6d28d9 100%);
+}
+
+/* ── Question cards ── */
+.question {
+  border: 1.5px solid var(--border-2);
+  border-radius: var(--r);
+  margin-bottom: 12px;
+  background: var(--white);
+  overflow: hidden;
+  transition: all .2s ease;
+  box-shadow: var(--sh-1);
+}
+
+.question:hover {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(26,86,219,.07), var(--sh-2);
+}
+
+.question.has-error { border-color: var(--red); }
+
+.question.collapsed .q-body { display: none; }
+
+.q-head {
+  padding: 12px 16px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border-2);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.q-num {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue) 0%, var(--brand-3) 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .82rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(26,86,219,.3);
+}
+
+.q-title {
+  font-weight: 700;
+  color: var(--ink-2);
+  flex: 1;
+  font-size: .9rem;
+}
+
+.q-type-badge {
+  font-size: .7rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 99px;
+  background: var(--blue-lt);
+  color: var(--blue);
+  flex-shrink: 0;
+  letter-spacing: .2px;
+}
+
+.q-actions { display: flex; gap: 4px; flex-shrink: 0; align-items: center; }
+
+.q-body { padding: 16px; }
+
+.q-value-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--amber-lt);
+  border-radius: var(--r-sm);
+  padding: 8px 12px;
+  margin-bottom: 14px;
+  border: 1px solid #fcd34d;
+}
+
+.q-value-row label {
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--amber);
+  white-space: nowrap;
+}
+
+.q-value-row input {
+  width: 76px;
+  padding: 5px 10px;
+  border: 1.5px solid #fcd34d;
+  border-radius: var(--r-xs);
+  font-family: inherit;
+  font-weight: 700;
+  font-size: .93rem;
+  text-align: center;
+  background: #fff;
+  outline: none;
+  transition: all .15s;
+}
+
+.q-value-row input:focus {
+  border-color: var(--amber);
+  box-shadow: 0 0 0 2px rgba(217,119,6,.15);
+}
+
+/* ── Alternatives ── */
+.alt-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border-2);
+}
+
+.alt-row:last-child { border-bottom: none; }
+
+.alt-letter {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--blue-lt);
+  color: var(--blue);
+  font-weight: 800;
+  font-size: .78rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.alt-row input[type="text"] {
+  flex: 1;
+  padding: 7px 10px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-xs);
+  font-family: inherit;
+  font-size: .88rem;
+  outline: none;
+  transition: border-color .15s;
+}
+
+.alt-row input[type="text"]:focus { border-color: var(--blue); }
+
+.alt-row input[type="radio"] {
+  width: 17px;
+  height: 17px;
+  accent-color: var(--green);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+/* ── Summary bar ── */
+.summary-bar {
+  position: sticky;
+  top: 8px;
+  z-index: 50;
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%);
+  color: #fff;
+  border-radius: var(--r);
+  padding: 12px 18px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  box-shadow: var(--sh-brand);
+}
+
+.sb-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .82rem;
+  font-weight: 600;
+  background: rgba(255,255,255,.13);
+  padding: 5px 12px;
+  border-radius: 99px;
+  border: 1px solid rgba(255,255,255,.1);
+}
+
+.sb-label { opacity: .7; font-weight: 400; }
+
+.summary-bar .btn-green { margin-left: auto; }
+
+/* ── Add area ── */
+.add-area {
+  border: 2px dashed var(--border);
+  border-radius: var(--r);
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: all .2s ease;
+  background: var(--surface);
+}
+
+.add-area:hover { border-color: var(--blue-mid); background: var(--blue-lt); }
+.add-area p { font-size: .86rem; color: var(--muted); }
+
+/* ── Print modes ── */
+.modes-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 560px) { .modes-grid { grid-template-columns: 1fr; } }
+
+.mode-card {
+  border: 2px solid var(--border-2);
+  border-radius: var(--r-sm);
+  padding: 14px;
+  cursor: pointer;
+  transition: all .2s ease;
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  background: var(--white);
+}
+
+.mode-card:hover {
+  border-color: var(--blue);
+  background: var(--blue-lt);
+  box-shadow: var(--sh-1);
+}
+
+.mode-card.selected {
+  border-color: var(--blue);
+  background: var(--blue-lt);
+  box-shadow: 0 0 0 2px rgba(26,86,219,.1);
+}
+
+.mode-card input[type="radio"] {
+  margin-top: 3px;
+  accent-color: var(--blue);
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.mode-icon { font-size: 24px; flex-shrink: 0; }
+.mode-title { font-weight: 700; font-size: .88rem; color: var(--ink-2); }
+.mode-desc { font-size: .76rem; color: var(--muted); margin-top: 2px; line-height: 1.4; }
+
+/* ── Modal ── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(13,17,23,.7);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+  backdrop-filter: blur(4px);
+}
+
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+
+.modal {
+  background: var(--white);
+  border-radius: var(--r);
+  max-width: 700px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--sh-3);
+  transform: translateY(16px) scale(.98);
+  transition: transform .25s cubic-bezier(.34,1.56,.64,1);
+  border: 1px solid var(--border-2);
+}
+
+.modal-overlay.open .modal { transform: translateY(0) scale(1); }
+
+.modal-head {
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--border-2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-head h3 { font-size: 1rem; font-weight: 700; color: var(--ink-2); }
+.modal-body { padding: 20px 22px; overflow-y: auto; flex: 1; }
+
+.preview-q {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-2);
+  font-size: .88rem;
+}
+
+.preview-q:last-child { border-bottom: none; }
+
+.pq-head { display: flex; gap: 8px; align-items: baseline; margin-bottom: 5px; flex-wrap: wrap; }
+.pq-num { font-weight: 800; color: var(--blue); font-size: .86rem; }
+.pq-enun { color: var(--ink); line-height: 1.45; flex: 1; }
+.pq-pts { font-size: .76rem; color: var(--muted); white-space: nowrap; }
+.pq-tipo {
+  font-size: .7rem;
+  padding: 2px 7px;
+  border-radius: 99px;
+  background: var(--blue-lt);
+  color: var(--blue);
+  font-weight: 700;
+}
+
+/* ── Toast ── */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 99999;
+  background: var(--green);
+  color: #fff;
+  border-radius: var(--r-sm);
+  padding: 11px 18px;
+  font-weight: 700;
+  font-size: .88rem;
+  box-shadow: var(--sh-3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transform: translateY(80px);
+  opacity: 0;
+  transition: all .3s cubic-bezier(.34,1.56,.64,1);
+  pointer-events: none;
+  min-width: 200px;
+}
+
+.toast.show { transform: translateY(0); opacity: 1; }
+
+/* ── Warn box ── */
+.warn-box {
+  background: var(--amber-lt);
+  border: 1px solid #fcd34d;
+  border-radius: var(--r-sm);
+  padding: 10px 14px;
+  font-size: .84rem;
+  color: #92400e;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+/* ── Multi-image thumbnails ── */
+.q-img-thumb-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.q-img-thumb {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: var(--r-xs);
+  border: 1.5px solid var(--border);
+  display: block;
+  cursor: pointer;
+  transition: opacity .15s;
+}
+
+.q-img-thumb:hover { opacity: .8; }
+
+.q-img-thumb-del {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--red);
+  color: #fff;
+  border: none;
+  font-size: .7rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,.2);
+  line-height: 1;
+}
+
+.q-img-thumb-del:hover { background: #b91c1c; }
+.grade-prev table { border-collapse: collapse; width: 100%; margin: 8px 0; font-size: .82rem; }
+.grade-prev th,
+.grade-prev td { border: 1px solid var(--border); padding: 6px 10px; text-align: center; }
+.grade-prev th:first-child,
+.grade-prev td:first-child { text-align: left; }
+.grade-prev th { background: var(--blue-lt); color: var(--blue); font-weight: 700; }
+
+/* ── Utility ── */
+.divider { height: 1px; background: var(--border-2); margin: 16px 0; }
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.row-between { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+.empty { text-align: center; padding: 32px 16px; color: var(--muted); }
+.empty .em-icon { font-size: 44px; display: block; margin-bottom: 10px; opacity: .5; }
+
+.info-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 9px;
+  border-radius: 99px;
+  font-size: .73rem;
+  font-weight: 700;
+  background: var(--blue-lt);
+  color: var(--blue);
+}
+
+@media print { body { display: none; } }
+.resumo-item {
+  background: var(--surface);
+  border: 1px solid var(--border-2);
+  border-radius: var(--r-sm);
+  padding: 12px 14px;
+}
+
+.resumo-label {
+  font-size: .7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.resumo-val {
+  font-weight: 700;
+  font-size: .95rem;
+  color: var(--ink-2);
+}
+
+.big-stat {
+  text-align: center;
+  padding: 14px;
+  border-radius: var(--r-sm);
+}
+
+.big-stat .num {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 3px;
+}
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0 16px;
+}
+
+.section-divider span {
+  font-size: .78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-2);
+}
+</style>
+</head>
+<body>
+
+<div class="app-shell">
+
+  <div class="app-main">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-inner">
+        <div class="hero-left">
+          <div class="hero-icon-wrap">📝</div>
+          <div>
+            <div class="hero-title">Gerador de Provas e Avaliações</div>
+            <div class="hero-brand-sub">Portal do Educador</div>
+          </div>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">📋 <span id="hd-qtd">0 questões</span></div>
+          <div class="hero-stat">⭐ <span id="hd-pts">0.0 pts</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step nav -->
+    <nav class="step-nav" role="tablist">
+      <button class="step-btn active" data-step="dados" role="tab">
+        <div class="sn">1</div>
+        <span>Dados da Prova</span>
+      </button>
+      <button class="step-btn" data-step="questoes" role="tab">
+        <div class="sn">2</div>
+        <span>Questões</span>
+      </button>
+      <button class="step-btn" data-step="impressao" role="tab">
+        <div class="sn">3</div>
+        <span>Gerar &amp; Imprimir</span>
+      </button>
+    </nav>
+
+    <!-- ═══ STEP 1: DADOS ═══ -->
+    <section id="step-dados">
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon ci-blue">🏫</div>
+          <div class="card-header-text">
+            <h2>Identificação da Escola</h2>
+            <p>Nome e logotipo que aparecerão no cabeçalho da prova</p>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="g2">
+            <div class="field">
+              <label>Nome da Escola</label>
+              <input id="pd-escola" type="text" placeholder="Ex: E.M. Prof. João Brasil">
+            </div>
+            <div class="field">
+              <label>Logotipo da Escola</label>
+              <div class="file-zone" id="logo-zone" onclick="document.getElementById('pd-logo').click()">
+                <div style="font-size:26px">🖼️</div>
+                <div style="font-size:.8rem;color:var(--muted);margin-top:4px">Clique para enviar PNG/JPG</div>
+                <input id="pd-logo" type="file" accept="image/*">
+              </div>
+              <img id="pd-logo-prev" class="logo-thumb" alt="Logo">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon ci-green">👩‍🏫</div>
+          <div class="card-header-text">
+            <h2>Professor e Turma</h2>
+            <p>Informações que identificam a avaliação</p>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="g2">
+            <div class="field">
+              <label>Professor(a)</label>
+              <input id="pd-prof" type="text" placeholder="Ex: Maria da Silva">
+            </div>
+            <div class="field">
+              <label>Disciplina</label>
+              <select id="pd-mat" onchange="handleDisciplinaChange(this)">
+                <option value="">— Selecione a disciplina —</option>
+
+                <optgroup label="🏫 Educação Infantil / Anos Iniciais (1º–5º ano)">
+                  <option>Língua Portuguesa</option>
+                  <option>Matemática</option>
+                  <option>Ciências da Natureza</option>
+                  <option>História</option>
+                  <option>Geografia</option>
+                  <option>Arte</option>
+                  <option>Educação Física</option>
+                  <option>Ensino Religioso</option>
+                </optgroup>
+
+                <optgroup label="📚 Anos Finais do Fundamental (6º–9º ano)">
+                  <option>Língua Portuguesa</option>
+                  <option>Língua Inglesa</option>
+                  <option>Língua Espanhola</option>
+                  <option>Matemática</option>
+                  <option>Ciências</option>
+                  <option>Física</option>
+                  <option>Química</option>
+                  <option>Biologia</option>
+                  <option>História</option>
+                  <option>Geografia</option>
+                  <option>Educação Física</option>
+                  <option>Arte</option>
+                  <option>Ensino Religioso</option>
+                  <option>Tecnologia e Informática</option>
+                </optgroup>
+
+                <optgroup label="🎓 Ensino Médio">
+                  <option>Língua Portuguesa e Literatura</option>
+                  <option>Redação</option>
+                  <option>Língua Inglesa</option>
+                  <option>Língua Espanhola</option>
+                  <option>Matemática</option>
+                  <option>Física</option>
+                  <option>Química</option>
+                  <option>Biologia</option>
+                  <option>História</option>
+                  <option>Geografia</option>
+                  <option>Filosofia</option>
+                  <option>Sociologia</option>
+                  <option>Educação Física</option>
+                  <option>Arte</option>
+                  <option>Tecnologia e Inovação</option>
+                </optgroup>
+
+                <optgroup label="🏛️ Ensino Superior — Exatas e Tecnologia">
+                  <option>Cálculo Diferencial e Integral</option>
+                  <option>Álgebra Linear</option>
+                  <option>Estatística e Probabilidade</option>
+                  <option>Física Geral</option>
+                  <option>Química Geral</option>
+                  <option>Programação e Algoritmos</option>
+                  <option>Estruturas de Dados</option>
+                  <option>Banco de Dados</option>
+                  <option>Engenharia de Software</option>
+                  <option>Redes de Computadores</option>
+                  <option>Inteligência Artificial</option>
+                  <option>Ciência de Dados</option>
+                  <option>Arquitetura e Urbanismo</option>
+                  <option>Engenharia Civil</option>
+                  <option>Engenharia Elétrica</option>
+                  <option>Engenharia Mecânica</option>
+                </optgroup>
+
+                <optgroup label="🩺 Ensino Superior — Saúde">
+                  <option>Anatomia Humana</option>
+                  <option>Fisiologia</option>
+                  <option>Farmacologia</option>
+                  <option>Bioquímica</option>
+                  <option>Microbiologia</option>
+                  <option>Patologia</option>
+                  <option>Enfermagem</option>
+                  <option>Nutrição</option>
+                  <option>Psicologia</option>
+                  <option>Fisioterapia</option>
+                  <option>Odontologia</option>
+                  <option>Medicina</option>
+                  <option>Veterinária</option>
+                </optgroup>
+
+                <optgroup label="⚖️ Ensino Superior — Humanas e Sociais">
+                  <option>Direito Constitucional</option>
+                  <option>Direito Civil</option>
+                  <option>Direito Penal</option>
+                  <option>Direito Trabalhista</option>
+                  <option>Contabilidade</option>
+                  <option>Administração</option>
+                  <option>Economia</option>
+                  <option>Marketing</option>
+                  <option>Gestão de Pessoas / RH</option>
+                  <option>Empreendedorismo</option>
+                  <option>Pedagogia</option>
+                  <option>Educação Especial</option>
+                  <option>Serviço Social</option>
+                  <option>Jornalismo</option>
+                  <option>Publicidade e Propaganda</option>
+                  <option>Relações Internacionais</option>
+                  <option>Filosofia</option>
+                  <option>Sociologia</option>
+                  <option>História</option>
+                  <option>Geografia</option>
+                  <option>Letras — Português</option>
+                  <option>Letras — Inglês</option>
+                  <option>Letras — Espanhol</option>
+                </optgroup>
+
+                <optgroup label="🎨 Ensino Superior — Artes e Design">
+                  <option>Design Gráfico</option>
+                  <option>Design de Interiores</option>
+                  <option>Design de Moda</option>
+                  <option>Artes Visuais</option>
+                  <option>Música</option>
+                  <option>Teatro</option>
+                  <option>Cinema e Audiovisual</option>
+                  <option>Arquitetura</option>
+                </optgroup>
+
+                <optgroup label="✏️ Outra disciplina">
+                  <option value="__outra__">Digitar manualmente...</option>
+                </optgroup>
+              </select>
+              <input id="pd-mat-custom" type="text" placeholder="Digite o nome da disciplina"
+                style="display:none;margin-top:6px">
+            </div>
+          </div>
+          <div class="g2 mt">
+            <div class="field">
+              <label>Turma / Série</label>
+              <input id="pd-turma" type="text" placeholder="Ex: 5º Ano B">
+            </div>
+            <div class="field">
+              <label>Data da Avaliação</label>
+              <input id="pd-data" type="date">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon ci-purple">📋</div>
+          <div class="card-header-text">
+            <h2>Instruções para o Aluno</h2>
+            <p>Orientações que aparecerão no início da prova (opcional)</p>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="field">
+            <label>Instruções</label>
+            <textarea id="pd-inst" placeholder="Ex: Leia todas as questões com atenção antes de responder. Não rasure o gabarito. Use caneta azul ou preta."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="row-between">
+        <div style="color:var(--muted);font-size:.82rem">Preencha os dados acima para identificar a prova</div>
+        <button class="btn btn-primary" onclick="goStep('questoes')">
+          Ir para Questões →
+        </button>
+      </div>
+
+    </section>
+
+    <!-- ═══ STEP 2: QUESTÕES ═══ -->
+    <section id="step-questoes" style="display:none">
+
+      <div class="summary-bar" id="summary-bar">
+        <div class="sb-item">
+          🔢 <span class="sb-label">Questões:</span> <strong id="sb-qtd">0</strong>
+        </div>
+        <div class="sb-item">
+          ⭐ <span class="sb-label">Pontos:</span> <strong id="sb-pts">0.0</strong>
+        </div>
+        <div class="sb-item" id="sb-warn" style="display:none;background:rgba(220,38,38,.25)">
+          ⚠️ <span id="sb-warn-txt"></span>
+        </div>
+        <button class="btn btn-green btn-sm" onclick="showPreview()">👁️ Visualizar prova</button>
+      </div>
+
+      <div id="qs-list"></div>
+
+      <div class="add-area" id="add-area">
+        <div id="add-icon" style="font-size:36px;opacity:.35">➕</div>
+        <p id="add-text">Clique no botão abaixo para adicionar uma questão</p>
+        <div class="row" style="gap:10px">
+          <input type="number" id="add-qtd" value="1" min="1" max="100"
+            style="width:66px;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--r-sm);font-family:inherit;font-size:.9rem;outline:none;text-align:center"
+            title="Quantidade a adicionar">
+          <button class="btn btn-primary" id="btn-add">+ Adicionar Questão</button>
+          <button class="btn btn-ghost" id="btn-clear">🗑️ Limpar todas</button>
+        </div>
+      </div>
+
+      <div class="row-between mt" style="margin-top:16px">
+        <button class="btn btn-ghost" onclick="goStep('dados')">← Dados da prova</button>
+        <button class="btn btn-primary" onclick="goStep('impressao')">Ir para Impressão →</button>
+      </div>
+
+    </section>
+
+    <!-- ═══ STEP 3: IMPRESSÃO ═══ -->
+    <section id="step-impressao" style="display:none">
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon ci-amber">⚙️</div>
+          <div class="card-header-text">
+            <h2>Configurações de Impressão</h2>
+            <p>Defina quantidade de cópias e embaralhamento das alternativas</p>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="g2">
+            <div class="field">
+              <label>Número de Cópias</label>
+              <input id="pd-num-copias" type="number" value="1" min="1" max="200">
+              <div class="hint">Cada cópia pode ser uma versão diferente se embaralhar estiver ativo</div>
+            </div>
+            <div class="field">
+              <label>Embaralhar Alternativas</label>
+              <select id="pd-embaralhar">
+                <option value="nao">Não embaralhar</option>
+                <option value="sim">Sim — gerar versões diferentes</option>
+              </select>
+              <div class="hint">Ao embaralhar, cada cópia recebe alternativas em ordem aleatória</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon ci-blue">🖨️</div>
+          <div class="card-header-text">
+            <h2>O que deseja gerar?</h2>
+            <p>Escolha o tipo de documento para impressão</p>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="modes-grid" id="modes-grid">
+
+            <label class="mode-card selected" data-val="provas">
+              <input type="radio" name="pd-modo" value="provas" checked>
+              <div class="mode-icon">📄</div>
+              <div>
+                <div class="mode-title">Somente a Prova</div>
+                <div class="mode-desc">Imprime as provas sem gabarito em separado</div>
+              </div>
+            </label>
+
+            <label class="mode-card" data-val="gab">
+              <input type="radio" name="pd-modo" value="gab">
+              <div class="mode-icon">🔑</div>
+              <div>
+                <div class="mode-title">Somente o Gabarito</div>
+                <div class="mode-desc">Imprime apenas a folha de gabarito (para o professor)</div>
+              </div>
+            </label>
+
+            <label class="mode-card" data-val="provas_gab_unico">
+              <input type="radio" name="pd-modo" value="provas_gab_unico">
+              <div class="mode-icon">📋</div>
+              <div>
+                <div class="mode-title">Prova + Gabarito Único</div>
+                <div class="mode-desc">Provas + 1 gabarito único ao final (sem embaralhar)</div>
+              </div>
+            </label>
+
+            <label class="mode-card" data-val="provas_gab_versao">
+              <input type="radio" name="pd-modo" value="provas_gab_versao">
+              <div class="mode-icon">🔀</div>
+              <div>
+                <div class="mode-title">Prova + Gabarito por Versão</div>
+                <div class="mode-desc">Cada cópia tem gabarito próprio (requer embaralhar ativo)</div>
+              </div>
+            </label>
+
+          </div>
+
+          <div class="warn-box mt" id="modo-warn" style="display:none">
+            ⚠️ <span id="modo-warn-txt"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon ci-green">✅</div>
+          <div class="card-header-text">
+            <h2>Resumo da Avaliação</h2>
+            <p>Verifique antes de gerar</p>
+          </div>
+        </div>
+        <div class="card-body" id="resumo-body">
+          <div style="color:var(--muted);font-size:.86rem;text-align:center;padding:8px">
+            Preencha os dados e adicione questões para ver o resumo.
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-cta btn-full" id="btn-imprimir" style="margin-bottom:8px">
+        🖨️ &nbsp; Gerar e Imprimir Agora
+      </button>
+      <div style="text-align:center;font-size:.78rem;color:var(--muted);margin-bottom:20px">
+        O documento será aberto em nova janela para impressão (PDF ou papel)
+      </div>
+
+      <div class="row-between">
+        <button class="btn btn-ghost" onclick="goStep('questoes')">← Voltar para Questões</button>
+      </div>
+
+    </section>
+
+  </div>
+
+</div>
+
+<!-- Toast -->
+<div class="toast" id="gp-toast">✅ <span id="toast-msg"></span></div>
+
+<!-- Modal preview -->
+<div class="modal-overlay" id="modal-overlay" onclick="if(event.target===this)closePreview()">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-head">
+      <h3>👁️ Visualização da Prova</h3>
+      <button class="btn btn-ghost btn-sm" onclick="closePreview()">✕ Fechar</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+'use strict';
+
+/* ── Utils ── */
+const $ = (s,r=document) => r.querySelector(s);
+const $$ = (s,r=document) => Array.from(r.querySelectorAll(s));
+const id = s => document.getElementById(s);
+const esc = s => (s||'').replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+
+/* ── State ── */
+let qCount = 0;
+const TYPE_LABELS = {
+  multipla:'Múltipla Escolha', checkbox:'Caixas de Seleção',
+  curta:'Resposta Curta', dissertativa:'Dissertativa',
+  vf:'Verdadeiro / Falso', escala:'Escala 1–5',
+  'grade-multipla':'Grade Múltipla', 'grade-checkbox':'Grade Checkbox'
+};
+
+/* ══ STEP NAV ══ */
+function goStep(name){
+  $$('.step-btn').forEach(b=>{
+    b.classList.remove('active','done');
+    if(b.dataset.step===name) b.classList.add('active');
+  });
+  // mark previous as done
+  const steps=['dados','questoes','impressao'];
+  const idx=steps.indexOf(name);
+  steps.forEach((s,i)=>{
+    const btn=$('.step-btn[data-step="'+s+'"]');
+    if(btn && i<idx) btn.classList.add('done');
+  });
+  $$('#step-dados,#step-questoes,#step-impressao').forEach(s=>s.style.display='none');
+  id('step-'+name).style.display='block';
+  if(name==='impressao') refreshResumo();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+$$('.step-btn').forEach(b=>{
+  b.addEventListener('click', ()=>goStep(b.dataset.step));
+});
+window.goStep=goStep;
+
+/* ══ DISCIPLINA ══ */
+function handleDisciplinaChange(sel){
+  const custom=id('pd-mat-custom');
+  if(sel.value==='__outra__'){
+    custom.style.display='block';
+    custom.focus();
+  } else {
+    custom.style.display='none';
+  }
+}
+window.handleDisciplinaChange=handleDisciplinaChange;
+
+function getDisciplina(){
+  const sel=id('pd-mat');
+  if(sel.value==='__outra__') return id('pd-mat-custom').value.trim();
+  return sel.value.trim();
+}
+
+/* ══ LOGO UPLOAD ══ */
+id('pd-logo').addEventListener('change', e=>{
+  const f=e.target.files[0], prev=id('pd-logo-prev');
+  if(!f){ prev.style.display='none'; prev.src=''; return; }
+  const rd=new FileReader();
+  rd.onload=ev=>{ prev.src=ev.target.result; prev.style.display='block'; };
+  rd.readAsDataURL(f);
+  id('logo-zone').style.background='var(--green-lt)';
+  id('logo-zone').style.borderColor='var(--green)';
+});
+
+/* ══ QUESTIONS ══ */
+const qsList = id('qs-list');
+
+id('btn-add').addEventListener('click', ()=>{
+  const n=parseInt(id('add-qtd')?.value)||1;
+  for(let i=0;i<n;i++) addQuestion();
+  toast(n>1?n+' questões adicionadas!':'Questão adicionada!');
+});
+
+id('btn-clear').addEventListener('click', ()=>{
+  if(!$$('.question',qsList).length) return;
+  if(confirm('Remover TODAS as questões? Esta ação não pode ser desfeita.'))
+  { qsList.innerHTML=''; renumber(); updateStats(); showEmptyState(); }
+});
+
+/* Delegation */
+qsList.addEventListener('click', ev=>{
+  const t=ev.target;
+  const q=t.closest('.question');
+  if(!q) return;
+  if(t.matches('.q-rm-btn')){
+    if(confirm('Remover esta questão?')){ q.remove(); renumber(); updateStats(); showEmptyState(); toast('Questão removida.','danger'); }
+  }
+  if(t.matches('.q-dup-btn')){ duplicateQuestion(q); }
+  if(t.matches('.q-toggle-btn')){ q.classList.toggle('collapsed'); t.textContent=q.classList.contains('collapsed')?'▶':'▼'; }
+  if(t.matches('.add-alt-btn')) addAltRow(q);
+  if(t.matches('.del-alt-btn')){ t.closest('.alt-row').remove(); reLetterAlts(q); }
+  if(t.matches('.add-linha-btn')){ addLinha(q); drawGradePreview(q); }
+  if(t.matches('.add-col-btn')){ addCol(q); drawGradePreview(q); }
+  if(t.matches('.del-row-btn')){ t.closest('.alt-row').remove(); }
+  if(t.matches('.add-img-btn')){ q.querySelector('.q-img-input').click(); }
+  if(t.matches('.q-img-thumb-del')){
+    t.closest('.q-img-thumb-wrap').remove();
+  }
+});
+qsList.addEventListener('change', ev=>{
+  const t=ev.target, q=t.closest('.question');
+  if(!q) return;
+  if(t.matches('.q-tipo')){ renderOptions(q); updateTypeBadge(q); }
+  if(t.matches('.q-img-input')){
+    const files=Array.from(t.files);
+    const preview=q.querySelector('.q-imgs-preview');
+    files.forEach(f=>{
+      const rd=new FileReader();
+      rd.onload=e2=>{
+        const wrap=document.createElement('div');
+        wrap.className='q-img-thumb-wrap';
+        wrap.dataset.src=e2.target.result;
+        wrap.innerHTML=`<img class="q-img-thumb" src="${e2.target.result}" alt=""><button type="button" class="q-img-thumb-del" title="Remover imagem">✕</button>`;
+        preview.appendChild(wrap);
+      };
+      rd.readAsDataURL(f);
+    });
+    t.value=''; // reset so same file can be added again
+  }
+});
+qsList.addEventListener('input', ev=>{
+  const t=ev.target, q=t.closest('.question');
+  if(!q) return;
+  if(t.matches('.q-valor')) updateStats();
+  if(t.matches('.linha,.col')) drawGradePreview(q);
+});
+
+function addQuestion(data=null){
+  qCount++;
+  const q=document.createElement('div');
+  q.className='question';
+  q.dataset.qid='q'+qCount;
+  const tipo=data?.tipo||'multipla';
+  q.innerHTML=`
+    <div class="q-head">
+      <div class="q-num">${qCount}</div>
+      <div class="q-title">Questão ${qCount}</div>
+      <span class="q-type-badge">${TYPE_LABELS[tipo]||tipo}</span>
+      <div class="q-actions">
+        <button type="button" class="btn btn-ghost btn-xs q-toggle-btn" title="Recolher/Expandir">▼</button>
+        <button type="button" class="btn btn-ghost btn-xs q-dup-btn" title="Duplicar">⧉</button>
+        <button type="button" class="btn btn-red btn-xs q-rm-btn" title="Remover">✕</button>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-value-row">
+        <label>⭐ Valor da questão:</label>
+        <input type="number" class="q-valor" value="${data?.valor||1}" min="0" step="0.1">
+        <span style="font-size:.78rem;color:var(--amber);font-weight:600">pontos</span>
+      </div>
+      <div class="g2 mb">
+        <div class="field">
+          <label>Tipo de Questão</label>
+          <select class="q-tipo">
+            ${Object.entries(TYPE_LABELS).map(([v,l])=>`<option value="${v}"${data?.tipo===v?' selected':''}>${l}</option>`).join('')}
+          </select>
+        </div>
+        <div class="field">
+          <label>Imagens (opcional)</label>
+          <button type="button" class="btn btn-ghost btn-sm add-img-btn" style="width:100%;justify-content:center">🖼️ Adicionar Imagem</button>
+          <input type="file" class="q-img-input" accept="image/*" style="display:none">
+          <div class="hint">Clique para adicionar quantas imagens quiser</div>
+        </div>
+      </div>
+      <div class="q-imgs-preview" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px"></div>
+      <div class="field mb">
+        <label>Enunciado da Questão</label>
+        <textarea class="q-enun" placeholder="Digite o enunciado da questão aqui..." style="min-height:70px">${esc(data?.enun||'')}</textarea>
+      </div>
+      <div class="q-opcoes"></div>
+    </div>`;
+  qsList.appendChild(q);
+  renderOptions(q, data);
+  renumber();
+  updateStats();
+  showEmptyState();
+  q.scrollIntoView({behavior:'smooth',block:'nearest'});
+  return q;
+}
+
+function duplicateQuestion(srcQ){
+  const idx=$$('.question',qsList).indexOf(srcQ);
+  const data=extractQData(srcQ, idx);
+  const nq=addQuestion(data);
+  if(data.tipo==='multipla' && Number.isInteger(data.gab) && data.gab>=0){
+    const radios=$$('.gab-radio',nq);
+    if(radios[data.gab]) radios[data.gab].checked=true;
+  }
+  toast('Questão duplicada!');
+}
+
+function renderOptions(qEl, data=null){
+  const tipo=qEl.querySelector('.q-tipo').value;
+  const wrap=qEl.querySelector('.q-opcoes');
+  const qid=qEl.dataset.qid;
+
+  if(tipo==='multipla'){
+    wrap.innerHTML=`
+      <div style="margin-bottom:8px">
+        <label style="font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px">
+          Alternativas — marque a correta com ○
+        </label>
+      </div>
+      <div class="q-alts-list"></div>
+      <button type="button" class="btn btn-ghost btn-sm add-alt-btn" style="margin-top:8px">+ Adicionar alternativa</button>`;
+    const initial=data?.alts?.length?data.alts:['',''];
+    initial.forEach((txt,i)=>addAltRow(qEl,txt,data?.gab===i));
+    if(!data?.alts?.length){ qEl.querySelector('.q-alts-list .alt-row input[type="radio"]')?.click(); }
+  }
+  else if(tipo==='checkbox'){
+    wrap.innerHTML=`
+      <div style="margin-bottom:8px">
+        <label style="font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px">
+          Alternativas (múltipla marcação permitida)
+        </label>
+      </div>
+      <div class="q-alts-list"></div>
+      <button type="button" class="btn btn-ghost btn-sm add-alt-btn" style="margin-top:8px">+ Adicionar alternativa</button>`;
+    const initial=data?.alts?.length?data.alts:['',''];
+    initial.forEach(txt=>addAltRow(qEl,txt,false,true));
+  }
+  else if(tipo==='curta'){
+    wrap.innerHTML=`
+      <div class="field">
+        <label>Resposta esperada (opcional — apenas para o professor)</label>
+        <input type="text" class="curta-exp" placeholder="Ex: Rio de Janeiro" value="${esc(data?.exp||'')}">
+      </div>`;
+  }
+  else if(tipo==='dissertativa'){
+    wrap.innerHTML=`
+      <div class="field">
+        <label>Critérios de correção (opcional — apenas para o professor)</label>
+        <textarea class="disc-exp" placeholder="Ex: Espera-se que o aluno cite ao menos 3 argumentos...">${esc(data?.exp||'')}</textarea>
+      </div>`;
+  }
+  else if(tipo==='vf'){
+    wrap.innerHTML=`
+      <div class="field" style="max-width:200px">
+        <label>Gabarito</label>
+        <select class="vf-sel">
+          <option value=""${!data?.gab?' selected':''}>Não definido</option>
+          <option value="V"${data?.gab==='V'?' selected':''}>✅ Verdadeiro</option>
+          <option value="F"${data?.gab==='F'?' selected':''}>❌ Falso</option>
+        </select>
+      </div>`;
+  }
+  else if(tipo==='escala'){
+    wrap.innerHTML=`
+      <div style="background:var(--surface);border-radius:8px;padding:12px;font-size:.86rem;color:var(--muted);border:1px solid var(--border-2)">
+        <strong style="color:var(--ink-3)">Escala fixa de 1 a 5</strong> — o aluno marcará um número na prova impressa.<br>
+        1 = Discordo totalmente &nbsp;·&nbsp; 5 = Concordo totalmente
+      </div>`;
+  }
+  else if(tipo.includes('grade')){
+    wrap.innerHTML=`
+      <div class="g2">
+        <div>
+          <div class="field" style="margin-bottom:6px"><label>Linhas (afirmações)</label></div>
+          <div class="q-linhas"></div>
+          <button type="button" class="btn btn-ghost btn-sm add-linha-btn" style="margin-top:6px">+ Linha</button>
+        </div>
+        <div>
+          <div class="field" style="margin-bottom:6px"><label>Colunas (opções)</label></div>
+          <div class="q-cols"></div>
+          <button type="button" class="btn btn-ghost btn-sm add-col-btn" style="margin-top:6px">+ Coluna</button>
+        </div>
+      </div>
+      <div class="grade-prev" style="margin-top:10px"></div>`;
+    const lins=data?.linhas?.length?data.linhas:['Afirmação 1','Afirmação 2'];
+    const cols=data?.cols?.length?data.cols:['Opção A','Opção B'];
+    lins.forEach(t=>addLinha(qEl,t));
+    cols.forEach(t=>addCol(qEl,t));
+    drawGradePreview(qEl);
+  }
+  else{ wrap.innerHTML=''; }
+}
+
+function addAltRow(qEl, txt='', checked=false, isCheckbox=false){
+  const list=qEl.querySelector('.q-alts-list'); if(!list) return;
+  const qid=qEl.dataset.qid;
+  const idx=list.children.length;
+  const letra=String.fromCharCode(65+idx);
+  const row=document.createElement('div');
+  row.className='alt-row';
+  row.innerHTML=`
+    <div class="alt-letter">${letra}</div>
+    ${!isCheckbox?`<input type="radio" name="gab-${qid}" class="gab-radio" ${checked?'checked':''} title="Marcar como correta">`:''}
+    <input type="text" class="alt" placeholder="Alternativa ${letra}" value="${esc(txt)}">
+    <button type="button" class="btn btn-red btn-xs del-alt-btn" title="Excluir">✕</button>`;
+  list.appendChild(row);
+}
+
+function reLetterAlts(qEl){
+  $$('.alt-row',qEl).forEach((row,i)=>{
+    const l=row.querySelector('.alt-letter');
+    if(l) l.textContent=String.fromCharCode(65+i);
+    const inp=row.querySelector('input[type="text"]');
+    if(inp) inp.placeholder='Alternativa '+String.fromCharCode(65+i);
+  });
+}
+
+function addLinha(qEl,txt=''){
+  const h=qEl.querySelector('.q-linhas'); if(!h) return;
+  const row=document.createElement('div');
+  row.className='alt-row';
+  row.innerHTML=`
+    <input type="text" class="linha" placeholder="Texto da linha" value="${esc(txt)}" style="flex:1;padding:7px 10px;border:1.5px solid var(--border);border-radius:6px;font-family:inherit">
+    <button type="button" class="btn btn-red btn-xs del-row-btn">✕</button>`;
+  h.appendChild(row);
+}
+
+function addCol(qEl,txt=''){
+  const h=qEl.querySelector('.q-cols'); if(!h) return;
+  const row=document.createElement('div');
+  row.className='alt-row';
+  row.innerHTML=`
+    <input type="text" class="col" placeholder="Texto da coluna" value="${esc(txt)}" style="flex:1;padding:7px 10px;border:1.5px solid var(--border);border-radius:6px;font-family:inherit">
+    <button type="button" class="btn btn-red btn-xs del-row-btn">✕</button>`;
+  h.appendChild(row);
+}
+
+function drawGradePreview(qEl){
+  const tipo=qEl.querySelector('.q-tipo').value;
+  const prev=qEl.querySelector('.grade-prev'); if(!prev) return;
+  const L=$$('.linha',qEl).map(i=>i.value.trim()).filter(Boolean);
+  const C=$$('.col',qEl).map(i=>i.value.trim()).filter(Boolean);
+  if(!L.length||!C.length){ prev.innerHTML=''; return; }
+  let html='<table><thead><tr><th></th>';
+  C.forEach(c=>html+=`<th>${esc(c)}</th>`);
+  html+='</tr></thead><tbody>';
+  L.forEach(l=>{ html+=`<tr><td>${esc(l)}</td>`; C.forEach(()=>html+=`<td>${tipo==='grade-multipla'?'○':'☐'}</td>`); html+='</tr>'; });
+  html+='</tbody></table>';
+  prev.innerHTML=html;
+}
+
+function updateTypeBadge(qEl){
+  const tipo=qEl.querySelector('.q-tipo').value;
+  const badge=qEl.querySelector('.q-type-badge');
+  if(badge) badge.textContent=TYPE_LABELS[tipo]||tipo;
+}
+
+function renumber(){
+  $$('.question',qsList).forEach((q,i)=>{
+    const numEl=q.querySelector('.q-num');
+    const titleEl=q.querySelector('.q-title');
+    if(numEl) numEl.textContent=i+1;
+    if(titleEl) titleEl.textContent='Questão '+(i+1);
+  });
+}
+
+function updateStats(){
+  const qs=$$('.question',qsList);
+  const n=qs.length;
+  const pts=qs.reduce((s,q)=>s+(parseFloat(q.querySelector('.q-valor')?.value)||0),0);
+  const tipos=[...new Set(qs.map(q=>q.querySelector('.q-tipo')?.value).filter(Boolean))];
+
+  id('hd-qtd').textContent=n+' questão'+(n===1?'':'s');
+  id('hd-pts').textContent=pts.toFixed(1)+' pts';
+  id('sb-qtd').textContent=n;
+  id('sb-pts').textContent=pts.toFixed(1)+' pts';
+
+  const warns=[];
+  qs.forEach((q,i)=>{
+    if(!q.querySelector('.q-enun')?.value.trim()) warns.push('Q'+(i+1)+' sem enunciado');
+  });
+  const wEl=id('sb-warn');
+  if(warns.length){ wEl.style.display='flex'; id('sb-warn-txt').textContent=warns.slice(0,2).join(', ')+(warns.length>2?` +${warns.length-2}`:''); }
+  else wEl.style.display='none';
+}
+
+function showEmptyState(){
+  const n=$$('.question',qsList).length;
+  const area=id('add-area'), icon=id('add-icon'), p=id('add-text');
+  area.style.display='flex';
+  if(n>0){
+    if(p) p.textContent='Adicionar mais questões à prova';
+    if(icon) icon.style.display='none';
+    area.style.padding='14px';
+  } else {
+    if(p) p.textContent='Clique no botão abaixo para adicionar uma questão';
+    if(icon) icon.style.display='block';
+    area.style.padding='22px';
+  }
+}
+
+/* ══ COLLECT DATA ══ */
+function collectData(){
+  const fmtDate=()=>{
+    const v=id('pd-data').value;
+    if(!v) return '';
+    const[y,m,d]=v.split('-'); return d+'/'+m+'/'+y;
+  };
+  const header={
+    escola:id('pd-escola').value.trim(),
+    prof:id('pd-prof').value.trim(),
+    mat:getDisciplina(),
+    turma:id('pd-turma').value.trim(),
+    data:fmtDate(),
+    inst:id('pd-inst').value.trim(),
+    logo:id('pd-logo-prev').src||''
+  };
+  let totalPontos=0;
+  const questoes=$$('.question',qsList).map((q,i)=>{
+    const tipo=q.querySelector('.q-tipo').value;
+    const enun=q.querySelector('.q-enun').value.trim();
+    const imgs=$$('.q-img-thumb-wrap',q).map(w=>w.dataset.src).filter(Boolean);
+    const img=imgs[0]||'';
+    const valor=parseFloat(q.querySelector('.q-valor').value)||0;
+    totalPontos+=valor;
+    let qd={n:i+1,tipo,enun,img,imgs,valor};
+    if(tipo==='multipla'||tipo==='checkbox'){
+      qd.alts=$$('.alt',q).map(a=>a.value.trim()).filter(Boolean);
+    }
+    if(tipo==='multipla'){
+      const radios=$$('.gab-radio',q);
+      let gi=-1; radios.forEach((r,idx)=>{ if(r.checked) gi=idx; });
+      qd.gab=gi;
+    }
+    if(tipo==='vf') qd.gab=q.querySelector('.vf-sel')?.value||'';
+    if(tipo==='curta') qd.exp=q.querySelector('.curta-exp')?.value.trim()||'';
+    if(tipo==='dissertativa') qd.exp=q.querySelector('.disc-exp')?.value.trim()||'';
+    if(tipo.includes('grade')){
+      qd.linhas=$$('.linha',q).map(i=>i.value.trim()).filter(Boolean);
+      qd.cols=$$('.col',q).map(i=>i.value.trim()).filter(Boolean);
+    }
+    return qd;
+  });
+  return {header,questoes,totalPontos};
+}
+
+function extractQData(qEl,idx){
+  const tipo=qEl.querySelector('.q-tipo').value;
+  const enun=qEl.querySelector('.q-enun').value.trim();
+  const valor=parseFloat(qEl.querySelector('.q-valor').value)||1;
+  let d={tipo,enun,valor};
+  if(tipo==='multipla'||tipo==='checkbox') d.alts=$$('.alt',qEl).map(a=>a.value.trim());
+  if(tipo==='multipla'){
+    const radios=$$('.gab-radio',qEl);
+    let gi=-1; radios.forEach((r,ri)=>{ if(r.checked) gi=ri; });
+    d.gab=gi;
+  }
+  if(tipo==='vf') d.gab=qEl.querySelector('.vf-sel')?.value||'';
+  if(tipo==='curta') d.exp=qEl.querySelector('.curta-exp')?.value||'';
+  if(tipo==='dissertativa') d.exp=qEl.querySelector('.disc-exp')?.value||'';
+  if(tipo.includes('grade')){
+    d.linhas=$$('.linha',qEl).map(i=>i.value.trim());
+    d.cols=$$('.col',qEl).map(i=>i.value.trim());
+  }
+  return d;
+}
+
+/* ══ PRINT MODE LOGIC ══ */
+id('pd-embaralhar').addEventListener('change', ()=>{
+  const emb=id('pd-embaralhar').value==='sim';
+  $$('.mode-card').forEach(mc=>{
+    const v=mc.dataset.val;
+    const radio=mc.querySelector('input[type="radio"]');
+    if(v==='provas_gab_unico'&&emb){ mc.style.opacity='.4'; mc.style.pointerEvents='none'; radio.disabled=true; }
+    else if(v==='provas_gab_versao'&&!emb){ mc.style.opacity='.4'; mc.style.pointerEvents='none'; radio.disabled=true; }
+    else{ mc.style.opacity=''; mc.style.pointerEvents=''; radio.disabled=false; }
+  });
+  checkModoWarn();
+});
+
+$$('.mode-card').forEach(mc=>{
+  mc.addEventListener('click',()=>{
+    $$('.mode-card').forEach(m=>m.classList.remove('selected'));
+    mc.classList.add('selected');
+    checkModoWarn();
+  });
+});
+
+function getModo(){ return ($('input[name="pd-modo"]:checked')||{}).value||'provas'; }
+
+function checkModoWarn(){
+  const emb=id('pd-embaralhar').value==='sim';
+  const modo=getModo();
+  const w=id('modo-warn'), wt=id('modo-warn-txt');
+  if(modo==='provas_gab_unico'&&emb){
+    w.style.display='flex'; wt.textContent='Este modo requer "Não embaralhar". Altere a configuração acima.';
+  } else if(modo==='provas_gab_versao'&&!emb){
+    w.style.display='flex'; wt.textContent='Este modo requer "Embaralhar ativo". Altere a configuração acima.';
+  } else {
+    w.style.display='none';
+  }
+}
+
+function refreshResumo(){
+  const data=collectData();
+  const H=data.header;
+  const n=data.questoes.length;
+  const tipos=[...new Set(data.questoes.map(q=>TYPE_LABELS[q.tipo]||q.tipo))];
+  if(!n){
+    id('resumo-body').innerHTML='<div style="color:var(--muted);font-size:.86rem;text-align:center;padding:8px">Nenhuma questão adicionada ainda.</div>';
+    return;
+  }
+  let html=`
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+      <div class="resumo-item" style="flex:2;min-width:180px">
+        <div class="resumo-label">Escola</div>
+        <div class="resumo-val">${esc(H.escola||'—')}</div>
+      </div>
+      <div class="resumo-item" style="flex:1;min-width:130px">
+        <div class="resumo-label">Professor(a)</div>
+        <div class="resumo-val">${esc(H.prof||'—')}</div>
+      </div>
+      <div class="resumo-item" style="flex:1;min-width:110px">
+        <div class="resumo-label">Disciplina</div>
+        <div class="resumo-val">${esc(H.mat||'—')}</div>
+      </div>
+      <div class="resumo-item" style="flex:1;min-width:90px">
+        <div class="resumo-label">Turma</div>
+        <div class="resumo-val">${esc(H.turma||'—')}</div>
+      </div>
+      <div class="resumo-item" style="flex:1;min-width:90px">
+        <div class="resumo-label">Data</div>
+        <div class="resumo-val">${esc(H.data||'—')}</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <div class="big-stat" style="background:var(--blue-lt);flex:1;min-width:100px">
+        <div class="num" style="color:var(--blue)">${n}</div>
+        <div style="font-size:.76rem;color:var(--blue);font-weight:700">Questões</div>
+      </div>
+      <div class="big-stat" style="background:var(--amber-lt);flex:1;min-width:100px">
+        <div class="num" style="color:var(--amber)">${data.totalPontos.toFixed(1)}</div>
+        <div style="font-size:.76rem;color:var(--amber);font-weight:700">Pontos totais</div>
+      </div>
+      <div class="resumo-item" style="flex:3;min-width:180px;display:flex;flex-direction:column;justify-content:center">
+        <div class="resumo-label">Tipos de questão usados</div>
+        <div style="font-size:.86rem;color:var(--ink-3);margin-top:4px">${tipos.length?tipos.join(' · '):'—'}</div>
+      </div>
+    </div>`;
+  id('resumo-body').innerHTML=html;
+}
+
+/* ══ PREVIEW MODAL ══ */
+function showPreview(){
+  const data=collectData();
+  if(!data.questoes.length){ toast('Adicione ao menos uma questão primeiro.','warn'); return; }
+  let html='';
+  data.questoes.forEach((q,i)=>{
+    html+=`
+      <div class="preview-q">
+        <div class="pq-head">
+          <span class="pq-num">Q${i+1}</span>
+          <span class="pq-tipo">${TYPE_LABELS[q.tipo]||q.tipo}</span>
+          <span class="pq-enun">${q.enun||'<em style="color:var(--red)">Sem enunciado</em>'}</span>
+          <span class="pq-pts">${q.valor.toFixed(1)} pt</span>
+        </div>
+        ${q.tipo==='multipla'&&q.alts?.length
+          ?`<div style="font-size:.8rem;color:var(--muted);padding-left:26px;margin-top:4px">${q.alts.map((a,ai)=>`${String.fromCharCode(65+ai)}) ${esc(a)}`).join(' &nbsp;·&nbsp; ')}</div>`
+          :''}
+      </div>`;
+  });
+  id('modal-body').innerHTML=html;
+  id('modal-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closePreview(){
+  id('modal-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+window.showPreview=showPreview;
+window.closePreview=closePreview;
+
+/* ══ PRINT ══ */
+id('btn-imprimir').addEventListener('click', handlePrint);
+
+function handlePrint(){
+  const data=collectData();
+  if(!data.questoes.length){ toast('Adicione ao menos 1 questão.','danger'); return; }
+  const n=Math.max(1,Math.min(200,parseInt(id('pd-num-copias').value)||1));
+  const emb=id('pd-embaralhar').value==='sim';
+  const modo=getModo();
+  if(modo==='provas_gab_unico'&&emb){ toast('"Prova + Gabarito Único" exige Não embaralhar.','danger'); return; }
+  if(modo==='provas_gab_versao'&&!emb){ toast('Para gabaritos por versão, ative o Embaralhar.','danger'); return; }
+
+  let inner='';
+  if(modo==='gab'){
+    inner+=buildAnswerKeyPage(data,null,'');
+  } else if(modo==='provas'){
+    for(let i=0;i<n;i++){
+      if(i>0) inner+=pageBreak();
+      const orders=emb?makeOrdersForVersion(data):null;
+      inner+=buildProofHTML(data,{includeKey:false,versionLabel:'',orders,copyIdx:i});
+    }
+  } else if(modo==='provas_gab_unico'){
+    for(let i=0;i<n;i++){
+      if(i>0) inner+=pageBreak();
+      inner+=buildProofHTML(data,{includeKey:false,copyIdx:i});
+    }
+    inner+=buildAnswerKeyPage(data,null,'Gabarito Único');
+  } else if(modo==='provas_gab_versao'){
+    const versionOrders=[];
+    for(let i=0;i<n;i++){
+      if(i>0) inner+=pageBreak();
+      const orders=makeOrdersForVersion(data);
+      versionOrders.push(orders);
+      inner+=buildProofHTML(data,{includeKey:false,versionLabel:'VERSÃO V'+(i+1),orders,copyIdx:i});
+    }
+    for(let i=0;i<n;i++){
+      inner+=buildAnswerKeyPage(data,versionOrders[i],'VERSÃO V'+(i+1));
+    }
+  }
+  printInIframe(wrapPrint(inner));
+  toast('Documento enviado para impressão!');
+}
+
+function pageBreak(){ return '<div style="page-break-before:always"></div>'; }
+
+/* ══ CÓDIGO ÚNICO DE AUTENTICIDADE ══ */
+function genProofCode(escola, mat, prof, turma, dataProva, copyIdx){
+  const ts = Date.now().toString(36).toUpperCase();
+  let h = 5381;
+  const raw = [escola,mat,prof,turma,dataProva,copyIdx].join('|');
+  for(let i=0;i<raw.length;i++) h = ((h<<5)+h) ^ raw.charCodeAt(i);
+  h = Math.abs(h) % 1048576;
+  return 'PE-' + h.toString(16).toUpperCase().padStart(5,'0') + '-' + ts.slice(-4) + (copyIdx>0?'-V'+(copyIdx+1):'');
+}
+
+function buildFooterPrint(escola, mat, prof, turma, dataProva, copyIdx){
+  const code = genProofCode(escola, mat, prof, turma, dataProva, copyIdx);
+  return `<div class="footer-print"><span class="footer-site">portaldoeducador.com.br &nbsp;&middot;&nbsp; Portal do Educador</span><span class="footer-code">Autenticidade: <strong>${code}</strong></span></div>`;
+}
+
+function wrapPrint(inner){
+  return '<!doctype html><html><head><meta charset="utf-8"><title>Impressao</title><style>'
+    + '@page{size:A4;margin:16mm 14mm}'
+    + 'body{font-family:Arial,sans-serif;font-size:11pt;color:#111;line-height:1.35;-webkit-print-color-adjust:exact;print-color-adjust:exact}'
+    + '.cab{display:flex;gap:14px;align-items:center;border-bottom:2.5px solid #0f2057;padding-bottom:10px;margin-bottom:14px}'
+    + '.cab img{max-height:52px;width:auto}'
+    + '.cab .t{flex:1}'
+    + '.cab .t h2{margin:.1rem 0;color:#0f2057;font-size:13pt;font-weight:bold}'
+    + '.cab .t .sub{font-size:9.5pt;color:#333;margin-top:2px}'
+    + '.badge-portal{font-size:7.5pt;background:#ebf1ff;color:#1240a8;padding:2px 7px;border-radius:99px;font-weight:bold;border:1px solid #c7d9ff}'
+    + '.versao{font-weight:bold;color:#7c3aed;font-size:12pt;text-align:right;white-space:nowrap}'
+    + '.aluno{display:flex;gap:10px;margin:.8rem 0 1.2rem;align-items:flex-end}'
+    + '.aluno .fx{flex:1;border-bottom:1px dashed #888;margin-right:10px;height:18px}'
+    + '.inst{color:#444;margin:.3rem 0 .8rem;font-size:9.5pt;background:#f7f9fc;padding:6px 10px;border-left:3px solid #1a56db;border-radius:0 4px 4px 0}'
+    + '.q{break-inside:avoid;border-bottom:1px dashed #e5e7eb;padding-bottom:10px;margin-bottom:10px}'
+    + '.q h3{font-weight:bold;margin-bottom:4px;color:#0f2057}'
+    + 'ul.alts{list-style:none;padding-left:0;margin:.5rem 0 1rem 0;column-count:2;column-gap:24px}'
+    + 'ul.alts li{margin-bottom:8px;break-inside:avoid-column}'
+    + '.opt-gap{display:inline-block;min-width:18px}'
+    + 'table{border-collapse:collapse;width:96%;margin:8px auto}'
+    + 'th,td{border:1px solid #ccc;padding:6px;text-align:center}'
+    + 'th:first-child,td:first-child{text-align:left}'
+    + 'th{background:#ebf1ff;color:#1240a8}'
+    + '.gab-title{color:#0f2057;font-size:14pt;font-weight:bold;margin:0 0 10px;padding-bottom:6px;border-bottom:2px solid #0f2057}'
+    + '.gab-list{list-style:none;padding:0;columns:4;gap:16px}'
+    + '.gab-list li{padding:4px 0;font-size:10pt}'
+    + '.footer-print{margin-top:14px;padding-top:6px;border-top:1px solid #e5e7eb;display:flex;justify-content:space-between;font-size:7pt;color:#aaa}'
+    + '.footer-code{font-family:monospace;color:#888}'
+    + '</style></head><body>' + inner + '</body></html>';
+}
+
+function printInIframe(htmlDoc){
+  const ifr = document.createElement('iframe');
+  ifr.style.cssText = 'position:fixed;right:0;bottom:0;width:0;height:0;border:0';
+  document.body.appendChild(ifr);
+  const doc = ifr.contentDocument || ifr.contentWindow.document;
+  doc.open(); doc.write(htmlDoc); doc.close();
+  setTimeout(function(){
+    try { ifr.contentWindow.focus(); ifr.contentWindow.print(); } catch(e){}
+    setTimeout(function(){ try { document.body.removeChild(ifr); } catch(e){} }, 1000);
+  }, 400);
+}
+
+
+function buildProofHTML(data,opts={}){
+  const{includeKey=false,versionLabel='',orders=null,copyIdx=0}=opts;
+  const H=data.header;
+  const total=data.totalPontos.toFixed(1);
+  let h=`
+    <div class="cab">
+      ${H.logo?`<img src="${H.logo}" alt="Logo">`:''}
+      <div class="t">
+        <h2>${esc(H.escola||'Escola')}</h2>
+        <div class="sub">
+          <strong>Disciplina:</strong> ${esc(H.mat||'')} &nbsp;|&nbsp;
+          <strong>Prof(a):</strong> ${esc(H.prof||'')} &nbsp;|&nbsp;
+          <strong>Turma:</strong> ${esc(H.turma||'')} &nbsp;|&nbsp;
+          <strong>Data:</strong> ${esc(H.data||'')} &nbsp;|&nbsp;
+          <strong>Total:</strong> ${total} pts
+        </div>
+      </div>
+      <div>
+        <span class="badge-portal">Portal do Educador</span>
+        ${versionLabel?`<div class="versao">${versionLabel}</div>`:''}
+      </div>
+    </div>
+    <div class="aluno">
+      <div><strong>Aluno(a):</strong></div><div class="fx"></div>
+      <div><strong>Nº</strong></div><div style="width:60px;border-bottom:1px dashed #888;height:18px"></div>
+    </div>
+    ${H.inst?`<div class="inst"><strong>Instruções:</strong> ${esc(H.inst)}</div>`:''}`;
+
+  data.questoes.forEach((q,idx)=>{
+    h+=`<div class="q"><h3>${idx+1}) (${q.valor.toFixed(1)} pts)</h3><div>${esc(q.enun)}</div>`;
+    const allImgs=q.imgs&&q.imgs.length?q.imgs:(q.img?[q.img]:[]);
+    if(allImgs.length){
+      h+=`<div style="display:flex;flex-wrap:wrap;gap:8px;margin:.5rem 0">`;
+      allImgs.forEach(src=>{ h+=`<img src="${src}" style="max-width:${allImgs.length===1?'92%':'45%'};max-height:220px;border-radius:6px;border:1px solid #ddd">`; });
+      h+=`</div>`;
+    }
+    if(q.tipo==='multipla'){
+      const alts=(q.alts||[]).slice();
+      const order=orders&&orders[idx]?orders[idx]:alts.map((_,i)=>i);
+      h+='<ul class="alts">';
+      order.forEach((oi,i)=>{
+        const letra=String.fromCharCode(65+i);
+        h+=`<li>${letra} ( <span class="opt-gap"></span> ) ${esc(alts[oi]||'')}</li>`;
+      });
+      h+='</ul>';
+    } else if(q.tipo==='checkbox'){
+      h+='<ul class="alts">';
+      (q.alts||[]).forEach(a=>h+=`<li>[ <span class="opt-gap"></span> ] ${esc(a)}</li>`);
+      h+='</ul>';
+    } else if(q.tipo==='vf'){
+      h+='<ul class="alts" style="column-count:1"><li>( V ) Verdadeiro</li><li>( F ) Falso</li></ul>';
+    } else if(q.tipo==='curta'){
+      h+='<div style="height:18px;border-bottom:1px solid #aaa;margin:.6rem 0"></div><div style="height:18px;border-bottom:1px solid #aaa;margin:.6rem 0"></div>';
+    } else if(q.tipo==='dissertativa'){
+      h+='<div style="height:120px;border:1px solid #bbb;border-radius:6px;margin-top:8px"></div>';
+    } else if(q.tipo==='escala'){
+      h+='<table><thead><tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr></thead><tbody><tr><td>Marque:</td><td>○</td><td>○</td><td>○</td><td>○</td><td>○</td></tr></tbody></table>';
+      h+='<div style="display:flex;justify-content:space-between;color:#666;font-size:9pt"><span>Discordo totalmente</span><span>Concordo totalmente</span></div>';
+    } else if(q.tipo.includes('grade')){
+      const L=q.linhas||[],C=q.cols||[];
+      if(L.length&&C.length){
+        h+='<table><thead><tr><th></th>'; C.forEach(c=>h+=`<th>${esc(c)}</th>`); h+='</tr></thead><tbody>';
+        L.forEach(l=>{ h+=`<tr><td>${esc(l)}</td>`; C.forEach(()=>h+=`<td>${q.tipo==='grade-multipla'?'○':'☐'}</td>`); h+='</tr>'; });
+        h+='</tbody></table>';
+      }
+    }
+    h+='</div>';
+  });
+
+  h += buildFooterPrint(H.escola, H.mat, H.prof, H.turma, H.data, copyIdx);
+  if(includeKey) h+=buildAnswerKeyPage(data,orders,versionLabel);
+  return h;
+}
+
+function buildAnswerKeyPage(data,orders=null,versionLabel=''){
+  let g=`${pageBreak()}<div class="gab-title">Gabarito${versionLabel?' — '+versionLabel:''}</div><ol class="gab-list">`;
+  data.questoes.forEach((q,i)=>{
+    if(q.tipo==='multipla'&&Number.isInteger(q.gab)&&q.gab>=0){
+      let letra='–';
+      if(orders&&orders[i]){ const np=orders[i].indexOf(q.gab); if(np>=0) letra=String.fromCharCode(65+np); }
+      else letra=String.fromCharCode(65+q.gab);
+      g+=`<li>${i+1}) ${letra}</li>`;
+    } else if(q.tipo==='vf'&&q.gab){
+      g+=`<li>${i+1}) ${q.gab}</li>`;
+    } else {
+      g+=`<li>${i+1}) –</li>`;
+    }
+  });
+  g+='</ol>';
+  return g;
+}
+
+function makeOrdersForVersion(data){
+  return data.questoes.map(q=>{
+    if(q.tipo==='multipla'&&q.alts?.length){
+      const idxs=q.alts.map((_,i)=>i);
+      idxs.sort(()=>Math.random()-.5);
+      return idxs;
+    }
+    return null;
+  });
+}
+
+/* ══ TOAST ══ */
+let toastTimer=null;
+function toast(msg,type='ok'){
+  const el=id('gp-toast'), msgEl=id('toast-msg');
+  el.style.background=type==='danger'?'var(--red)':type==='warn'?'var(--amber)':'var(--green)';
+  msgEl.textContent=msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>el.classList.remove('show'),2800);
+}
+window.toast=toast;
+
+/* ══ INIT ══ */
+addQuestion();
+showEmptyState();
+goStep('dados');
+
+})();
+</script>
+</body>
+</html>
